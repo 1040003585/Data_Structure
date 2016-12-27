@@ -1,6 +1,6 @@
 #define MaxVertexNum 100
 #define VertexType int
-//## 1.1 Í¼µÄÁÚ½Ó¾ØÕó¶¨Òå·¨
+//## 1.1 å›¾çš„é‚»æ¥çŸ©é˜µå®šä¹‰æ³•
 typedef struct{
 	VertexType vexs[MaxVertexNum];
 	int arc[MaxVertexNum][MaxVertexNum];
