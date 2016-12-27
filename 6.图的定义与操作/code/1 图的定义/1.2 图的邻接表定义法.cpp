@@ -1,7 +1,7 @@
 #define MaxVertexNum 100
 #define VertexType int
 #define WeightType double
-//## 1.2 图的邻接表定义法
+//## 1.2 鍥剧殑閭绘帴琛ㄥ畾涔夋硶
 typedef struct ArcNode{
 	int adjvex;
 	WeightType cost;
