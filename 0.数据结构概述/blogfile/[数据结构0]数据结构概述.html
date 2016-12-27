@@ -1,0 +1,146 @@
+<p><div class="toc">
+<ul>
+<li><a href="#1-基本概念">基本概念</a></li>
+<li><a href="#2-数据结构三要素">数据结构三要素</a><ul>
+<li><a href="#21-逻辑结构">1 逻辑结构</a></li>
+<li><a href="#22-存储结构">2 存储结构</a></li>
+<li><a href="#23-数据运算">3 数据运算</a></li>
+</ul>
+</li>
+<li><a href="#3-算法和算法评价">算法和算法评价</a><ul>
+<li><a href="#31-算法">1 算法</a><ul>
+<li><a href="#311算法的特性">11算法的特性</a></li>
+<li><a href="#312算法设计要求">12算法设计要求</a></li>
+</ul>
+</li>
+<li><a href="#32-算法评价">2 算法评价</a><ul>
+<li><a href="#321-时间复杂度">21 时间复杂度</a></li>
+<li><a href="#322-空间复杂度">22 空间复杂度</a></li>
+<li><a href="#323-数量级比较">23 数量级比较</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</p>
+
+
+
+<h1 id="1-基本概念">1 基本概念</h1>
+
+<p>　　<strong>数据结构</strong>：相互之间存在一种或多种特定关系的数据元素的集合。包括三方面：<strong>逻辑结构</strong>、<strong>存储结构</strong>和<strong>数据运算</strong>。</p>
+
+
+
+<h1 id="2-数据结构三要素">2 数据结构“三要素”</h1>
+
+
+
+<h2 id="21-逻辑结构">2.1 逻辑结构</h2>
+
+<p>　　<strong>逻辑结构</strong>是描述数据元素之间的逻辑关系，它与数据的存储无关，是独立于计算机的。数据的逻辑结构分为<strong>线性结构</strong>和<strong>非线性结构</strong>，<strong>线性表</strong>是典型的线性结构；<strong>树</strong>和<strong>图</strong>是典型的非线性结构。数据的逻辑结构分类如下：</p>
+
+<ul>
+<li><strong>线性结构</strong>：数据元素之间存在“<strong>一对一</strong>”的关系。</li>
+<li><strong>树形结构</strong>：数据元素之间存在“<strong>一对多</strong>”的关系。</li>
+<li><strong>图形结构</strong>：数据元素之间存在“<strong>多对多</strong>”的关系。</li>
+<li><strong>集合关系</strong>：数据元素之间除了“<strong>同属于一个集合</strong>”的关系外，无其他关系。</li>
+</ul>
+
+<p><img src="http://img.blog.csdn.net/20161227201050346?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxNDEzNDE4MA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title=""></p>
+
+
+
+<h2 id="22-存储结构">2.2 存储结构</h2>
+
+<p>　　<strong>存储结构</strong>又称<strong>物理结构</strong>，是指数据结构在计算机的实际表示方式，用计算机语言的实现，依赖于计算机语言。数据的存储结构分类如下：</p>
+
+<ul>
+<li><strong>顺序存储</strong>：逻辑上相邻的结点存储在物理位置也相邻。<strong>优点</strong>：可以随机存储，每个结点占用较少空间。<strong>缺点</strong>：要占用相邻一整块存储空间，会产生外部碎片。</li>
+<li><strong>链式存储</strong>：不要求逻辑上相邻的结点存储在物理位置也相邻。<strong>优点</strong>：能充分利用存储空间。缺点：只能顺序存储，每个结点占用较多空间。</li>
+<li><strong>索引存储</strong>：存储结点要建立附加的索引表，索引表中的每一项叫<strong>索引顶（关键字，地址）</strong>。<strong>优点</strong>：检索速度快。<strong>缺点</strong>：占用额外的空间。</li>
+<li><strong>散列存储</strong>：也叫<strong>哈希存储（Hash）</strong>，由结点的关键字通过散列函数直接计算该结点的地址。<strong>优点</strong>：检索速度很快。<strong>缺点</strong>：如果散列函数设计不好会出现存储单元冲突，而解决冲突会带来额外的时空开销。</li>
+</ul>
+
+
+
+<h2 id="23-数据运算">2.3 数据运算</h2>
+
+<p>　　施加在数据上的运算包括运算的定义和实现。<strong>运算的定义</strong>是针对逻辑结构的，指出运算功能；<strong>运算的实现</strong>是针对存储结构的，指出运算的具体操作步骤。</p>
+
+
+
+<h1 id="3-算法和算法评价">3 算法和算法评价</h1>
+
+
+
+<h2 id="31-算法">3.1 算法</h2>
+
+<p>　　<strong>算法（algorithm）</strong>是对特定问题的求解步骤的一种描述，它是指令的有限步骤。</p>
+
+
+
+<h3 id="311算法的特性">3.1.1算法的特性</h3>
+
+<ul>
+<li><strong>有穷性</strong>：执行有穷步骤后结束。区别于程序的死循环。</li>
+<li><strong>确定性</strong>：了叫无二义性，对于相同的输入只能得到相同的输出。</li>
+<li><strong>可行性</strong>：可以通过基本运算实现。</li>
+<li><strong>输入性</strong>：有0个或多个输入。</li>
+<li><strong>输出性</strong>：有1个或多个输出。</li>
+</ul>
+
+
+
+<h3 id="312算法设计要求">3.1.2算法设计要求</h3>
+
+<p>　　<strong>正确性</strong>，<strong>易读性(readability)</strong>，<strong>健壮性(robustness)</strong>，<strong>时空效率</strong>。</p>
+
+
+
+<h2 id="32-算法评价">3.2 算法评价</h2>
+
+<p>　　算法效率的度量是通过算法的<strong>时间复杂度</strong>和<strong>空间复杂度</strong>来描述的。</p>
+
+
+
+<h3 id="321-时间复杂度">3.2.1 时间复杂度</h3>
+
+<p>　　<strong>语句的频度</strong>是该语句在算法中被重复执行的次数。算法所有语句的频度之和记作<strong>T(n)</strong>，它是该算法问题规模n的函数，<strong>时间复杂度</strong>主要分析T(n)数量级。算法的基本运算（最深层循环内的语句）的频度与T(n)同数量级，所以采用算法中基本运算的频度f(n)来分析算法的时间复杂度。因此，算法的时间复杂度也记为：<strong>T(n) = O(f(n))</strong>。 <br>
+　　上式中“<strong>O</strong>”的含义是T(n)的<strong>数量级</strong>，其数学定义：若T(n)和f(n)是定义在正整数集合的两个函数，则存在正常数C和n0，使得当n &gt;= n0时，都满足0 &lt;= T(n) &lt; C*f(n)。 <br>
+　　算法的时间复杂度不仅依赖于<strong>问题的规模n</strong>，也取决于<strong>输入数据的初始状态</strong>（如各种排序算法）。</p>
+
+<p><strong>三类时间复杂度：</strong></p>
+
+<ul>
+<li><strong>平均时间复杂度</strong>：所有可能输入实例在等概率的情况下，算法的期望运行时间。</li>
+<li><strong>最好时间复杂度</strong>：最好情况下，算法的时间复杂度。</li>
+<li><strong>最坏时间复杂度</strong>：最坏情况下，算法的时间复杂度。一般考虑最坏情况的时间复杂度，以保证运行时间不会比它更长。</li>
+</ul>
+
+<p><strong>分析一个程序时间复杂度的两个规则：</strong></p>
+
+<ul>
+<li><strong>加法规则</strong>：T(n) = T1(n)+T2(n) = O(f(n))+O(g(n)) = O(max(f(n),g(n)))</li>
+<li><strong>乘法规则</strong>：T(n) = T1(n)*T2(n) = O(f(n))*O(g(n)) = O((f(n)*g(n))</li>
+</ul>
+
+
+
+<h3 id="322-空间复杂度">3.2.2 空间复杂度</h3>
+
+<p>　　<strong>空间复杂度S(n)</strong>：该算法所耗费的存储空间，它是问题规模n的函数。渐进空间复杂度也常简称为空间复杂度，记作：<strong>S(n) = O(g(n))</strong>。 <br>
+　　<strong>算法原地工作</strong>是指算法所需辅助空间是常量，即<strong>O(1)</strong>。</p>
+
+
+
+<h3 id="323-数量级比较">3.2.3 数量级比较</h3>
+
+<p>　　<strong>O(1) &lt; O(log2 n) &lt; O(n) &lt; O(n*log n) &lt; O(n^2) &lt; O(n^3) &lt; O(2^n) &lt; O(n!) &lt; O(n^n)</strong> <br>
+　　 <br>
+<img src="http://img.blog.csdn.net/20161227201135519?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxNDEzNDE4MA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title=""> </p>
+
+<p>　 <br>
+<strong>Wu_Being 博客声明</strong>：本人博客欢迎转载，请标明博客原文和原链接！谢谢！  <br>
+《数据结构概述》<a href="http://blog.csdn.net/u014134180/article/details/53898647">http://blog.csdn.net/u014134180/article/details/53898647</a></p>
