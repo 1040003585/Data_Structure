@@ -36,19 +36,17 @@
 
 
 <pre class="prettyprint"><code class=" hljs cpp"><span class="hljs-preprocessor">#include&lt;stdio.h&gt;</span>
-<span class="hljs-preprocessor">#define MaxSize 50              <span class="hljs-comment">//预定义顺序表最大长度</span></span>
-<span class="hljs-preprocessor">#define ElemType int            <span class="hljs-comment">//预定义顺序表元素类型</span></span>
+<span class="hljs-preprocessor">#define MaxSize 50          <span class="hljs-comment">//预定义顺序表最大长度</span></span>
+<span class="hljs-preprocessor">#define ElemType int        <span class="hljs-comment">//预定义顺序表元素类型</span></span>
 <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span>{
-    ElemType data[MaxSize];     <span class="hljs-comment">//顺序表的元素</span>
-    <span class="hljs-keyword">int</span> length;                 <span class="hljs-comment">//顺序表的当前长度</span>
-}SqList;                        <span class="hljs-comment">//顺序表的类型定义</span>
+    ElemType data[MaxSize]; <span class="hljs-comment">//顺序表的元素</span>
+    <span class="hljs-keyword">int</span> length;             <span class="hljs-comment">//顺序表的当前长度</span>
+}SqList;                    <span class="hljs-comment">//顺序表的类型定义</span>
 <span class="hljs-keyword">int</span> main(){
-    SqList L;L.length=<span class="hljs-number">0</span>;        <span class="hljs-comment">//声明定义顺序表L，并设置当前长度为0</span>
+    SqList L;L.length=<span class="hljs-number">0</span>;    <span class="hljs-comment">//声明定义顺序表L，并设置当前长度为0</span>
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,L.length);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }</code></pre>
-
-
 
 <h2 id="12-动态存储">1.2 动态存储</h2>
 
@@ -67,16 +65,14 @@
 }SeqList;                   <span class="hljs-comment">//动态分配的顺序表的类型定义</span>
 SeqList L;                  <span class="hljs-comment">//声明定义顺序表L，全局变量默认长度为0</span>
 <span class="hljs-keyword">int</span> main(){
-    L.data=(ElemType*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(ElemType)*InitSize);    <span class="hljs-comment">//C语言初始动态分配语句</span>
-<span class="hljs-comment">//  L.data=new ElemType(InitSize);                          //C++的初始动态分配语句</span>
-    L.MaxSize=InitSize;                                     <span class="hljs-comment">//设置顺序表最大容量</span>
+    L.data=(ElemType*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(ElemType)*InitSize);<span class="hljs-comment">//C语言初始动态分配语句</span>
+<span class="hljs-comment">//  L.data=new ElemType(InitSize);                      //C++的初始动态分配语句</span>
+    L.MaxSize=InitSize;                                 <span class="hljs-comment">//设置顺序表最大容量</span>
     L.data=(ElemType*)realloc(L.data,<span class="hljs-keyword">sizeof</span>(ElemType)*(InitSize+ListIncrement));<span class="hljs-comment">//顺序表扩充</span>
-    L.MaxSize+=ListIncrement;                               <span class="hljs-comment">//顺序表扩充后最大容量也要设置</span>
+    L.MaxSize+=ListIncrement;                           <span class="hljs-comment">//顺序表扩充后最大容量也要设置</span>
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,L.length);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }</code></pre>
-
-
 
 <h1 id="2-顺序表的基本操作">2 顺序表的基本操作</h1>
 
@@ -100,18 +96,18 @@ SeqList L;                  <span class="hljs-comment">//声明定义顺序表L�
 }SeqList;                   <span class="hljs-comment">//动态分配的顺序表的类型定义</span>
 SeqList L;                  <span class="hljs-comment">//声明定义顺序表L，全局变量默认长度为0</span>
 <span class="hljs-comment">//1.插入操作 </span>
-<span class="hljs-keyword">bool</span> ListInsert_Seq(SeqList &amp;L,<span class="hljs-keyword">int</span> i,ElemType e){   <span class="hljs-comment">//第i个位置（1&lt;=i&lt;=L.length+1）插入元素e</span>
-    <span class="hljs-keyword">if</span>(i&lt;<span class="hljs-number">1</span>||i&gt;L.length+<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;     <span class="hljs-comment">//i的位置不合法</span>
-    <span class="hljs-keyword">if</span>(L.length&gt;=L.MaxSize){                <span class="hljs-comment">//当前长度已达到最大容量，扩充分配存储空间</span>
+<span class="hljs-keyword">bool</span> ListInsert_Seq(SeqList &amp;L,<span class="hljs-keyword">int</span> i,ElemType e){<span class="hljs-comment">//第i个位置（1&lt;=i&lt;=L.length+1）插入元素e</span>
+    <span class="hljs-keyword">if</span>(i&lt;<span class="hljs-number">1</span>||i&gt;L.length+<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <span class="hljs-comment">//i的位置不合法</span>
+    <span class="hljs-keyword">if</span>(L.length&gt;=L.MaxSize){            <span class="hljs-comment">//当前长度已达到最大容量，扩充分配存储空间</span>
         ElemType *newbase=(ElemType*)realloc(L.data,<span class="hljs-keyword">sizeof</span>(ElemType)*(InitSize+ListIncrement));<span class="hljs-comment">//顺序表扩充</span>
-        <span class="hljs-keyword">if</span>(!newbase)<span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;       <span class="hljs-comment">//存储分配失败 </span>
-        L.data=newbase;                 <span class="hljs-comment">//新基址 </span>
-        L.MaxSize+=ListIncrement;       <span class="hljs-comment">//增加存储容量 </span>
+        <span class="hljs-keyword">if</span>(!newbase)<span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;   <span class="hljs-comment">//存储分配失败 </span>
+        L.data=newbase;             <span class="hljs-comment">//新基址 </span>
+        L.MaxSize+=ListIncrement;   <span class="hljs-comment">//增加存储容量 </span>
     }
-    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=L.length;j&gt;=i;j--)        <span class="hljs-comment">//第i个元素以及其后的元素右移1个位置</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=L.length;j&gt;=i;j--)    <span class="hljs-comment">//第i个元素以及其后的元素右移1个位置</span>
         L.data[j]=L.data[j-<span class="hljs-number">1</span>];
-    L.data[i-<span class="hljs-number">1</span>]=e;                      <span class="hljs-comment">//腾出一个空位置插入新元素</span>
-    L.length++;                         <span class="hljs-comment">//表当前长度+1</span>
+    L.data[i-<span class="hljs-number">1</span>]=e;                  <span class="hljs-comment">//腾出一个空位置插入新元素</span>
+    L.length++;                     <span class="hljs-comment">//表当前长度+1</span>
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
 }
 <span class="hljs-keyword">int</span> main(){
@@ -122,8 +118,6 @@ SeqList L;                  <span class="hljs-comment">//声明定义顺序表L�
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,L.length);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }</code></pre>
-
-
 
 <h2 id="22-删除操作">2.2 删除操作</h2>
 
@@ -143,18 +137,18 @@ typedef struct{
 }SeqList;                   <span class="hljs-regexp">//</span>动态分配的顺序表的类型定义
 SeqList L;                  <span class="hljs-regexp">//</span>声明定义顺序表L，全局变量默认长度为<span class="hljs-number">0</span>
 //<span class="hljs-number">2</span>.删除操作
-bool ListDelete_Se<span class="hljs-string">q(SeqList &amp;L,int i,ElemType&amp; e)</span>{  <span class="hljs-regexp">//</span>删除第i个位置（<span class="hljs-number">1</span>&lt;=i&lt;=L.<span class="hljs-keyword">length</span>）元素
-    <span class="hljs-keyword">if</span>(i&lt;<span class="hljs-number">1</span>||i&gt;L.<span class="hljs-keyword">length</span>)<span class="hljs-keyword">return</span> false;            <span class="hljs-regexp">//i</span>的位置不合法
-    e=L.data[i-<span class="hljs-number">1</span>];                              <span class="hljs-regexp">//</span>将被删除的元素用引用变量e返回
-    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i;j&lt;L.<span class="hljs-keyword">length</span>;j++)                 //第i个位置之后元素前移
+bool ListDelete_Se<span class="hljs-string">q(SeqList &amp;L,int i,ElemType&amp; e)</span>{<span class="hljs-regexp">//</span>删除第i个位置（<span class="hljs-number">1</span>&lt;=i&lt;=L.<span class="hljs-keyword">length</span>）元素
+    <span class="hljs-keyword">if</span>(i&lt;<span class="hljs-number">1</span>||i&gt;L.<span class="hljs-keyword">length</span>)<span class="hljs-keyword">return</span> false; <span class="hljs-regexp">//i</span>的位置不合法
+    e=L.data[i-<span class="hljs-number">1</span>];                  <span class="hljs-regexp">//</span>将被删除的元素用引用变量e返回
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i;j&lt;L.<span class="hljs-keyword">length</span>;j++)     //第i个位置之后元素前移
         L.data[j-<span class="hljs-number">1</span>]=L.data[j];
-    L.<span class="hljs-keyword">length</span>--;                                 <span class="hljs-regexp">//</span>表长度-<span class="hljs-number">1</span>
+    L.<span class="hljs-keyword">length</span>--;                     <span class="hljs-regexp">//</span>表长度-<span class="hljs-number">1</span>
     <span class="hljs-keyword">return</span> true;
 } 
 <span class="hljs-keyword">int</span> main(){
     L.data=(ElemType<span class="hljs-variable">*)</span>malloc(sizeof(ElemType)<span class="hljs-variable">*InitSize</span>);
     L.MaxSize=InitSize;
-    ListInsert_Se<span class="hljs-string">q(L,1,10)</span>;                     <span class="hljs-regexp">//</span>
+    ListInsert_Se<span class="hljs-string">q(L,1,10)</span>;         <span class="hljs-regexp">//</span>
     <span class="hljs-keyword">int</span> e;
     <span class="hljs-keyword">if</span>(ListDelete_Se<span class="hljs-string">q(L,1,e)</span>)
         <span class="hljs-keyword">printf</span>(<span class="hljs-string">"delete:<span class="hljs-variable">%d</span>,length:<span class="hljs-variable">%d</span>\n"</span>,e,L.<span class="hljs-keyword">length</span>);
@@ -184,16 +178,14 @@ bool ListDelete_Se<span class="hljs-string">q(SeqList &amp;L,int i,ElemType&amp;
 
 <pre class="prettyprint"><code class=" hljs perl">//<span class="hljs-comment">## 2.4 顺序表并集</span>
 void Union_Se<span class="hljs-string">q(SeqList &amp;La,SeqList Lb)</span>{
-    <span class="hljs-keyword">int</span> La_len=La.<span class="hljs-keyword">length</span>,Lb_len=Lb.<span class="hljs-keyword">length</span>;      <span class="hljs-regexp">//</span>求顺序表长度
+    <span class="hljs-keyword">int</span> La_len=La.<span class="hljs-keyword">length</span>,Lb_len=Lb.<span class="hljs-keyword">length</span>;  <span class="hljs-regexp">//</span>求顺序表长度
     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=Lb_len;i++){
-        <span class="hljs-keyword">int</span> e=Lb.data[i-<span class="hljs-number">1</span>];                     <span class="hljs-regexp">//</span>取Lb第i个元素赋给e 
-        <span class="hljs-keyword">if</span>(!LocateElem_Se<span class="hljs-string">q(La,e)</span>){              <span class="hljs-regexp">//</span>在La查找不到e,则插入 
+        <span class="hljs-keyword">int</span> e=Lb.data[i-<span class="hljs-number">1</span>];                 <span class="hljs-regexp">//</span>取Lb第i个元素赋给e 
+        <span class="hljs-keyword">if</span>(!LocateElem_Se<span class="hljs-string">q(La,e)</span>){          <span class="hljs-regexp">//</span>在La查找不到e,则插入 
             ListInsert_Se<span class="hljs-string">q(La,++La_len,e)</span>;
         }
     }
 }</code></pre>
-
-
 
 <h2 id="25-顺序表合并">2.5 顺序表合并</h2>
 
@@ -213,9 +205,10 @@ void MergeList_Se<span class="hljs-string">q(SeqList La,SeqList Lb,SeqList &amp;
         <span class="hljs-keyword">else</span> 
             ListInsert_Se<span class="hljs-string">q(Lc,++ci,Lb.data[bi++])</span>;
     } 
-    <span class="hljs-keyword">while</span>(ai&lt;La.<span class="hljs-keyword">length</span>)ListInsert_Se<span class="hljs-string">q(Lc,++ci,La.data[ai++])</span>;   <span class="hljs-regexp">//</span>插入La剩余元素 
-    <span class="hljs-keyword">while</span>(bi&lt;Lb.<span class="hljs-keyword">length</span>)ListInsert_Se<span class="hljs-string">q(Lc,++ci,Lb.data[bi++])</span>;   <span class="hljs-regexp">//</span>插入Lb剩余元素
+    <span class="hljs-keyword">while</span>(ai&lt;La.<span class="hljs-keyword">length</span>)ListInsert_Se<span class="hljs-string">q(Lc,++ci,La.data[ai++])</span>;<span class="hljs-regexp">//</span>插入La剩余元素 
+    <span class="hljs-keyword">while</span>(bi&lt;Lb.<span class="hljs-keyword">length</span>)ListInsert_Se<span class="hljs-string">q(Lc,++ci,Lb.data[bi++])</span>;<span class="hljs-regexp">//</span>插入Lb剩余元素
 }</code></pre>
 
 <p><strong>Wu_Being 博客声明</strong>：本人博客欢迎转载，请标明博客原文和原链接！谢谢！  <br>
-【数据结构系列】《【数据结构1】顺序表》<a href="http://blog.csdn.net/u014134180/article/details/53907607">http://blog.csdn.net/u014134180/article/details/53907607</a></p>
+【数据结构系列】《【数据结构1】顺序表》<a href="http://blog.csdn.net/u014134180/article/details/53907607">http://blog.csdn.net/u014134180/article/details/53907607</a> <br>
+我的GitHub代码文件：<a href="https://github.com/1040003585/Data_Structure">https://github.com/1040003585/Data_Structure</a></p>
